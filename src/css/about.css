@@ -1,0 +1,9 @@
+body {
+    background: linear-gradient(to bottom right, #FFC107, #FF9800);
+}
+.about {
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-top: 80px;
+}
