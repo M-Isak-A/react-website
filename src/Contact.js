@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './css/contact.css';
-import './css/header.css';
 import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
