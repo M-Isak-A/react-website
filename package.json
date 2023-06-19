@@ -1,7 +1,7 @@
 {
   
-  "homepage": "http://M-Isak-A.github.io/pizza-shop",
-  "name": "react-pizza-web",
+  "homepage": "http://M-Isak-A.github.io/pizza-web",
+  "name": "pizza-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
