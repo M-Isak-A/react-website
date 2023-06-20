@@ -4,9 +4,6 @@ import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
 
-function toggleResponsiveClass() {
-  document.getElementsByClassName("navbar")[0].classList.toggle("responsive");
-}
 
 const Contact = () => {
   const [name, setName] = useState('');

@@ -1,38 +1,30 @@
-import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './css/header.css';
 
-function toggleResponsiveClass() {
-  document.getElementsByClassName('navbar')[0].classList.toggle('responsive');
-}
-
 const Header = () => {
-  const homeMatch = useMatch('/home');
-  const aboutMatch = useMatch('/about');
-  const contactMatch = useMatch('/contact');
+  const location = useLocation();
 
-  const homePath = useResolvedPath('/home');
-  const aboutPath = useResolvedPath('/about');
-  const contactPath = useResolvedPath('/contact');
+  const toggleResponsiveClass = () => {
+    setResponsiveClass(responsiveClass === 'navbar' ? 'navbar responsive' : 'navbar');
+  };
+
+  const [responsiveClass, setResponsiveClass] = React.useState('navbar');
 
   return (
     <div>
       <header className="header"></header>
-      <div className="navbar" id="myNavbar">
-        <Link to={homePath.href} className={homeMatch ? 'active' : ''}>
+      <div className={responsiveClass} id="myNavbar">
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
           Home
         </Link>
-        <Link to={aboutPath.href} className={aboutMatch ? 'active' : ''}>
+        <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
           About
         </Link>
-        <Link to={contactPath.href} className={contactMatch ? 'active' : ''}>
+        <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
           Contact
         </Link>
-        <Link
-          to="#/"
-          className="icon"
-          onClick={toggleResponsiveClass}
-        >
+        <Link to="#/" className="icon" onClick={toggleResponsiveClass}>
           &#9776;
         </Link>
       </div>
