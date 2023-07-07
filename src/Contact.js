@@ -4,7 +4,6 @@ import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
 
-
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,7 +13,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:5000/submit_form', { name, email, message })
+      .post('/submit_form', { name, email, message })
       .then((response) => {
         setSuccessMessage(response.data.message);
         setName('');
