@@ -13,7 +13,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://muxiye2.pythonanywhere.com/submit_form', { name, email, message })
+      .post('https://muxiye2.pythonanywhere.com/submit_form', { name, email, message })
       .then((response) => {
         setSuccessMessage(response.data.message);
         setName('');
