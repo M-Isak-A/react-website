@@ -12,8 +12,13 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://mohamed-pizza.netlify.app',
+    };
+
     axios
-      .post('https://muxiye2.pythonanywhere.com/submit_form', { name, email, message })
+      .post('https://muxiye2.pythonanywhere.com/submit_form', { name, email, message }, { headers })
       .then((response) => {
         setSuccessMessage(response.data.message);
         setName('');
