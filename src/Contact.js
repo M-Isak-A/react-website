@@ -18,7 +18,7 @@ const Contact = () => {
     };
 
     axios
-      .post('https://muxiye2.pythonanywhere.com/submit_form', { name, email, message }, { headers })
+      .post('http://10.0.0.213:5001/submit_form', { name, email, message }, { headers })
       .then((response) => {
         setSuccessMessage(response.data.message);
         setName('');
