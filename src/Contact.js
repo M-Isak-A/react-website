@@ -14,11 +14,14 @@ const Contact = () => {
     e.preventDefault();
     const headers = {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://mohamed-pizza.netlify.app',
+      'Access-Control-Allow-Origin': '',
     };
 
+    // Update the Axios URL to point to your backend host
+    const backendURL = 'https://godey-app-2f6dfddb022d.herokuapp.com';
+
     axios
-      .post('http://10.0.0.213:5001/submit_form', { name, email, message }, { headers })
+      .post(`${backendURL}/submit_form`, { name, email, message }, { headers })
       .then((response) => {
         setSuccessMessage(response.data.message);
         setName('');
