@@ -18,7 +18,7 @@ const Contact = () => {
     };
 
     // Update the Axios URL to point to your backend host
-    const backendURL = 'https://godey-app-2f6dfddb022d.herokuapp.com';
+    const backendURL = 'https://godey-325d3bcc41e5.herokuapp.com';
 
     axios
       .post(`${backendURL}/submit_form`, { name, email, message }, { headers })
