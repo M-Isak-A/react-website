@@ -10,28 +10,23 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '',
-    };
 
-    // Update the Axios URL to point to your backend host
-    const backendURL = 'https://godey-325d3bcc41e5.herokuapp.com';
+    try {
+      const response = await axios.post(
+        'https://muxiye.pythonanywhere.com/submit_form',
+        { name, email, message }
+      );
 
-    axios
-      .post(`${backendURL}/submit_form`, { name, email, message }, { headers })
-      .then((response) => {
-        setSuccessMessage(response.data.message);
-        setName('');
-        setEmail('');
-        setMessage('');
-      })
-      .catch((error) => {
-        console.error(error);
-        setSuccessMessage('An error occurred while submitting the form.');
-      });
+      setSuccessMessage(response.data.message);
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage('An error occurred while submitting the form.');
+    }
   };
 
   return (
