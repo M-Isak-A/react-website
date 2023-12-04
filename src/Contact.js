@@ -16,8 +16,11 @@ const Contact = () => {
     try {
       const response = await axios.post(
         'https://muxiye.pythonanywhere.com/submit_form',
-        { name, email, message }
-      );
+         { name, email, message },
+         { withCredentials: true }
+);
+
+
 
       setSuccessMessage(response.data.message);
       setName('');
