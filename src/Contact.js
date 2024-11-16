@@ -2,40 +2,49 @@ import React, { useState } from 'react';
 import './css/contact.css';
 import Header from './Header';
 import Footer from './Footer';
-import axios from 'axios';
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = {
+      name,
+      email,
+      message,
+    };
+
     try {
-      const response = await axios.post(
-        'https://muxiye.pythonanywhere.com/submit_form',
-         { name, email, message },
-         { withCredentials: true }
-);
+      // Update this URL to your PythonAnywhere domain
+      const response = await fetch('https://mohamed2025.pythonanywhere.com/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-
-
-      setSuccessMessage(response.data.message);
-      setName('');
-      setEmail('');
-      setMessage('');
+      if (response.ok) {
+        setSuccessMessage('Your message has been sent successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setErrorMessage('There was an error sending your message. Please try again.');
+      }
     } catch (error) {
-      console.error(error);
-      setSuccessMessage('An error occurred while submitting the form.');
+      setErrorMessage('Network error: Could not send message. Please try again later.');
     }
   };
 
   return (
     <div>
       <Header />
-
       <h1>Contact Us</h1>
       <section>
         <form onSubmit={handleSubmit}>
@@ -72,6 +81,7 @@ const Contact = () => {
           <input type="submit" value="Submit" />
         </form>
         {successMessage && <p>{successMessage}</p>}
+        {errorMessage && <p>{errorMessage}</p>}
       </section>
       <Footer />
     </div>
