@@ -21,7 +21,7 @@ const Contact = () => {
 
     try {
       // Update this URL to your PythonAnywhere domain
-      const response = await fetch('https://mohamed2025.pythonanywhere.com/send-email', {
+      const response = await fetch('https://mohamed2025.pythonanywhere.com/submit_form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
